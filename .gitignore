@@ -1,0 +1,25 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Secrets — never commit
+.env
+.env.*
+*.key
+*.pem
+secrets.yaml
+
+# User data & generated output
+data/
+vault/
+*.log
+
+# Obsidian / OS cruft
+.obsidian/
+.DS_Store

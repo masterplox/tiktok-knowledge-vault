@@ -1,0 +1,37 @@
+# TKV configuration. API keys are NEVER stored here — set ANTHROPIC_API_KEY
+# in your environment instead.
+
+data_dir: data
+vault_dir: vault
+
+ai_backend: auto                # auto | claude-cli (Claude Code login, no key) | anthropic-api
+
+model: claude-sonnet-5          # enrichment model (anthropic-api backend)
+vision_model: claude-sonnet-5   # frame-analysis model
+
+# Transcription backend:
+#   faster-whisper  local, offline, no API key   (pip install -e ".[whisper]")
+#   watch-skill     Groq Whisper API; reads GROQ_API_KEY from the environment
+#                   (or ~/.config/watch/.env if you use the /watch skill)
+#   none            captions only; videos without captions are skipped
+stt_backend: faster-whisper
+whisper_model: small
+
+request_delay: 2.0              # seconds between TikTok requests (be polite)
+max_retries: 3
+translate: false
+
+watch:
+  backend: builtin              # builtin | claude-watch-skill
+  mode: scene                   # scene | fps
+  fps: 1.0
+  max_frames_per_video: 20
+  max_width: 1280
+  scene_threshold: 0.3
+  frame_budget_per_run: 8000
+
+# Per-channel taxonomy overrides (extend, don't need to repeat defaults)
+taxonomy:
+  platform: [web, mobile, desktop, general]
+  domain: [networking, database, auth, ui-ux, performance, security, testing,
+           devops, architecture, general]
